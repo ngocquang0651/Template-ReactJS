@@ -1,25 +1,28 @@
 import React, { useState } from "react";
-import useRequest from "./useRequest";
-import useTitle from "./useTitle";
+import useTitle from "../../Hooks/useTitle";
+
+interface Post {
+    title: string,
+    id:number
+}
 
 function Home() {
 
-    const [posts,isLoading]=useRequest("https://jsonplaceholder.typicode.com/posts?_limit=5");
     const [title,setTitle] = useState('');
-    const handleTitle = (e)=>{
-        setTitle(e.target.value);    
-    }
+    // const handleTitle = (e)=>{
+    //     setTitle(e.target.value);    
+    // }
         useTitle(title);
     return(
         <div className="home">
             <h1>Post</h1>
-            <ul>
-                {isLoading ? (<div>Loanding....</div>) : (posts.map((post,index)=><li key={index}>{post.title}</li>))}
-            </ul>
+            {/* <ul>
+              {isLoading ? (<div>Loanding....</div>) : (posts.map((post:Post)=><li key={post.id}>{post.title}</li>))}
+            </ul> */}
 
             <input 
             value={title}
-            onChange={e=>handleTitle(e)}
+    //        onChange={e=>handleTitle(e)}
             />
         
         </div>
