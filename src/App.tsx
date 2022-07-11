@@ -13,69 +13,33 @@ import CoursesIndex from "./templates/layouts/CoursesIndex";
 import NoMatch from "./templates/layouts/NoMatch";
 import Courses from "./templates/layouts/Courses";
 
-// function App() {
-//   const routes: RouteObject[] = [
-//     {
-//       path: "/",
-//       element: < Layout  />,
-//       children: [
-//         { index: true, element: <Home /> },
-//         {
-//           path: "/courses",
-//           element: <Courses />,
-//           children: [
-//             { index: true, element: <CoursesIndex /> },
-//             { path: "/courses/:id", element: <Course /> },
-//           ],
-//         },
-//         { path: "*", element: <NoMatch /> },
-//       ],
-//     },
-//   ];
-//   const element = useRoutes(routes);
-
-//   return (
-//     <div className="App">
-//       {element}
-//     </div>
-//   );
-// }
-const themes = {
-  light: {
-    foreground: "#000000",
-    background: "#eeeeee"
-  },
-  dark: {
-    foreground: "#ffffff",
-    background: "#222222"
-  }
-};
-
-const ThemeContext = React.createContext(themes.light);
-
 function App() {
-  return (
-    <ThemeContext.Provider value={themes.dark}>
-      <Toolbar />
-    </ThemeContext.Provider>
-  );
-}
+  const routes: RouteObject[] = [
+    {
+      path: "/",
+      element: < Layout  />,
+      children: [
+        { index: true, element: <Home /> },
+        {
+          path: "/courses",
+          element: <Courses />,
+          children: [
+            { index: true, element: <CoursesIndex /> },
+            { path: "/courses/:id", element: <Course /> },
+          ],
+        },
+        { path: "*", element: <NoMatch /> },
+      ],
+    },
+  ];
+  const element = useRoutes(routes);
 
-function Toolbar(props:any) {
   return (
-    <div>
-      <ThemedButton />
+    <div className="App">
+      {element}
     </div>
   );
 }
 
-function ThemedButton() {
-  const theme = useContext(ThemeContext);
-  return (
-    <button style={{ background: theme.background, color: theme.foreground }}>
-      Tôi đang được style bởi theme context!
-    </button>
-  );
-}
 
 export default App;
