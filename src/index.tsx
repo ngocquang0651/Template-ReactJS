@@ -6,6 +6,7 @@ import reportWebVitals from './reportWebVitals';
 import {
   BrowserRouter,
 } from "react-router-dom";
+import LoggerProvider from './components/loggerProvider';
 
 
 const root = ReactDOM.createRoot(
@@ -13,9 +14,12 @@ const root = ReactDOM.createRoot(
 );
 root.render(
   <React.StrictMode>
+    <LoggerProvider handler={(args:any)=>console.log("Error",...args)
+    }>
     <BrowserRouter>
     <App />
     </BrowserRouter>
+    </LoggerProvider>
   </React.StrictMode>
 );
 

@@ -1,18 +1,17 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import useTitle from "../../Hooks/useTitle";
 
-interface Post {
-    title: string,
-    id:number
-}
 
 function Home() {
 
     const [title,setTitle] = useState('');
-    // const handleTitle = (e)=>{
-    //     setTitle(e.target.value);    
-    // }
-        useTitle(title);
+    const handleTitle = (e:any)=>{
+        setTitle(e.target.value);    
+    }
+    
+        
+        
+        useTitle('asdasda');
     return(
         <div className="home">
             <h1>Post</h1>
@@ -22,7 +21,7 @@ function Home() {
 
             <input 
             value={title}
-    //        onChange={e=>handleTitle(e)}
+           onChange={e=>handleTitle(e)}
             />
         
         </div>
@@ -30,15 +29,3 @@ function Home() {
 }
 
 export default Home;
-
-// interface Ilogger {
-//     info:(msg:string)=>void;
-//     error:(msg:string)=>void;
-// }
-
-// class ConsoleLog extends Ilogger
-// {
-//     info(msg:string){
-//         console.log(msg)
-//     }
-// }
